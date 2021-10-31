@@ -22,7 +22,6 @@ api = tweepy.API(auth)
 
 logger.info("Connecting to Twitter API...")
 bot_user = api.verify_credentials()
-me = bot_user.name
 
 praises = [
   "you're the best 👏👏👏",
@@ -53,7 +52,8 @@ class PraiseStream(tweepy.Stream):
 
       for mention in re.finditer(r"\s@(\w+)\b", status.text):
           target = mention.group(1)
-          if target == me:
+          if target == bot_user.screen_name:
+            logger.debug("skipping self mention")
             continue
           
           praise(target)
