@@ -47,6 +47,8 @@ def praise(target):
 class PraiseStream(tweepy.Stream):
     def on_status(self, status):
       logger.info("@%s >> %s", status.user.screen_name, status.text)
+      api.create_favorite(status.id)
+
       if re.search(r"\s+praise\s+me\s*$", status.text):
         praise(status.user.screen_name)
 
