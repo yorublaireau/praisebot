@@ -29,8 +29,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          
+
       - name: Add piku remote
         run: git remote add piku piku@[$(tailscale ip -6 $MACHINE)]:${{ secrets.APP_NAME }}
       - run: git push -f piku main
-        
