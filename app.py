@@ -1,9 +1,10 @@
 import tweepy
 import os
 import sys
-import re
 import logging
 import random
+
+from search import does_text_says_praise_me, get_mentions
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL") or logging.INFO
 API_KEY = os.environ["API_KEY"]
@@ -49,16 +50,12 @@ class PraiseStream(tweepy.Stream):
       logger.info("@%s >> %s", status.user.screen_name, status.text)
       api.create_favorite(status.id)
 
-      if re.search(r"\s+praise\s+me\s*$", status.text):
-        praise(status.user.screen_name)
+      if does_text_says_praise_me(status.text):
+          praise(status.user.screen_name)
 
-      for mention in re.finditer(r"\s@(\w+)\b", status.text):
-          target = mention.group(1)
-          if target == bot_user.screen_name:
-            logger.debug("skipping self mention")
-            continue
-          
-          praise(target)
+      for mention in get_mentions(status.text, bot_user.screen_name):
+          praise(mention)
+
 
 logger.info(f"Connected as @{bot_user.screen_name}")
 
