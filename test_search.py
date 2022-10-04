@@ -19,7 +19,7 @@ def test_text_says_praise_me(text):
 not_praise_data = [
     "something different",
     "@praiserbot what's up my guy praise the shit out of me",
-    "@praiserbot praise me and my family"
+    "@praiserbot praise me and my family",
 ]
 
 
@@ -35,7 +35,7 @@ def test_mentions_dont_return_bot_name():
 
 praise_others_data = [
     ("@praiserbot praise @rwnx", ["rwnx"]),
-    ("@praiserbot praise @yorublaireau and @rwnx", ["yorublaireau", "rwnx"])
+    ("@praiserbot praise @yorublaireau and @rwnx", ["yorublaireau", "rwnx"]),
 ]
 
 

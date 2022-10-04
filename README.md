@@ -17,3 +17,10 @@ Running on and continuously deploying to a piku app on a raspberry pi zero.
 
 Connectivity using tailscale vpn - check out [.github/workflows/deploy.yml](.github/workflows/deploy.yml)
 
+## Linting
+Linting is handled by [Black](https://github.com/psf/black)
+
+Once installed, you can run it with
+```shell
+black .
+```
