@@ -20,4 +20,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Testing fixtures
 - Linting with Black
 - CI workflow to run the linter and the tests
-- Pre commit hooks
+- Pre-commit hooks
+- Reply to the tweet with feedback if no action has been taken
